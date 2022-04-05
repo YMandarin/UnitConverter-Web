@@ -51,6 +51,7 @@ body{
 
 #converter-content input{
     padding: 5px 10px;
+    flex:1;
 }
 
 #type-search select{
