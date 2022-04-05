@@ -1,0 +1,14 @@
+{
+    "name": "HT Unit Calculator",
+    "short_name": "Unit Calculator",
+    "start_url": "./",
+    "display": "standalone",
+    "theme_color": "#ffffff",
+    "background_color":"#ffffff",
+    "icons": [
+      {
+        "src": "favicon.png",
+        "sizes": "100x100",
+        "type": "image/png"
+      }]
+  }
