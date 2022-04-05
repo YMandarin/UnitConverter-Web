@@ -34,9 +34,13 @@
             </div>
             <div id="converter-content">
                 <div id="from-to-content" class="flex-container-horizontal">
-                    <input type="text" id="input-from">
-                    <span>-></span>
-                    <input type="text" id="input-from">
+                    <input type="text" id="input-from" placeholder="from">
+                    <div id="arrow-container"><svg width="40" height="20">
+                        <path d="m0 10 l25 0" stroke="black" stroke-width="4"/>
+                        <polygon points="25,0 40,10 25,20" fill="black"/>
+                        
+                    </svg></div>
+                    <input type="text" id="input-from" placeholder="to">
                 </div>
             </div>
         </div>

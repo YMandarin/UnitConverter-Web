@@ -21,7 +21,7 @@ body{
 .flex-container-horizontal{
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: stretch;
 }
 
 #selector-active{
@@ -56,9 +56,14 @@ body{
 #type-search select{
     background: none;
     flex:1;
-    padding:5px 10px;
+    padding:0 10px;
     border:1px solid rgb(200,200,200);
     width:100%;
+    height:100%;
+}
+
+#type-search option{
+    padding:0 10px;
 }
 
 #type-search{
@@ -69,4 +74,8 @@ body{
     background: rgb(230,230,230);
 }
 
-
+#arrow-container{
+    display:flex;
+    align-items: center;
+    margin: 0 10px;
+}
