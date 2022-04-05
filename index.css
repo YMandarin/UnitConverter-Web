@@ -1,3 +1,72 @@
-h1{
-    color: blue;
+body{
+    padding:0;
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+#header-bar{
+    text-align: center;
+    padding: 10px;
+    background-color: skyblue;
+    color:white;
+    font-size: 2em;
+}
+#content{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    max-width: 500px;
+}
+
+.flex-container-horizontal{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#selector-active{
+    background-color: rgb(230,230,230);
+    border-bottom: none;
+}
+
+.selector-type{
+    padding:5px 10px;
+    border: 1px solid rgb(200,200,200);
+    border-right:0;
+    border-top:0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.selector-type:hover{
+    background-color: rgb(210,210,210);
+}
+.selector-type:active{
+    background-color: rgb(200,200,200);
+}
+
+#converter-content{
+    margin: 20px;
+}
+
+#converter-content input{
+    padding: 5px 10px;
+}
+
+#type-search select{
+    background: none;
+    flex:1;
+    padding:5px 10px;
+    border:1px solid rgb(200,200,200);
+    width:100%;
+}
+
+#type-search{
+    flex:1;
+}
+
+#type-search:hover{
+    background: rgb(230,230,230);
+}
+
+
