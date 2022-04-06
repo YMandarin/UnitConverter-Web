@@ -1,3 +1,7 @@
+var unit_from, unit_to, unit_system_from, unit_system_to, value_from, value_to, type_list, type_selection, current_unit_type, current_unit_from, current_unit_to, contentFrame = undefined
+var roundTo = 6
+var typeWidth = 75
+
 class Unit {
     constructor(short, calculateToSI, calculateFromSI) {
         this.short = short;
@@ -46,8 +50,90 @@ units = {
         Other:{
             "Stalin": new Unit("st",x=>x*1.65, x=>x/1.65)
         },
-    }
+    },
+    Weight:{
+        SI:{
+            "Kilo-Gram": new Unit("kg", x=>x, x=>x)
+        }
+    },
+    Area:{
+        SI:{
+            "Squaremeter": new Unit("m^2", x=>x, x=>x)
+        }
+    },
+    Volume:{
+        SI:{
+        "Cubicmeter": new Unit("m^3", x=>x, x=>x)
+        }
+    },
+    Density:{
+        SI:{
+        "Kilo-Gram/Cubicmeter": new Unit("kg", x=>x, x=>x)
+        }   
+    },
+    Temperature:{
+        SI:{
+        "Kelvin": new Unit("K", x=>x, x=>x)
+        }   
+    },
+    Power:{
+        SI:{
+        "Watt": new Unit("W", x=>x, x=>x)
+        }   
+    },
+    Force:{
+        SI:{
+        "Newton": new Unit("N", x=>x, x=>x)
+        }   
+    },
+    Velocity:{
+        SI:{
+        "Meter/Second": new Unit("m/s", x=>x, x=>x)
+        }   
+    },
+    Acceleration:{
+        SI:{
+        "Meter/Second^2": new Unit("m/s^2", x=>x, x=>x)
+        }   
+    },
+    Radioactivity:{
+        SI:{
+        "Bequerel": new Unit("kg", x=>x, x=>x)
+        }   
+    },
 }
+
+
+window.onload = function () {
+    unit_from = document.getElementById("unit-from")
+    unit_to = document.getElementById("unit-to")
+    unit_system_from = document.getElementById("unit-system-from")
+    unit_system_to = document.getElementById("unit-system-to")
+
+    value_from = document.getElementById("input-from")
+    value_to = document.getElementById("input-to")
+
+    type_list = document.getElementById("type-list")
+    type_selection = document.getElementById("type-select")
+
+    contentFrame = document.getElementById("content")
+
+    window.onresize = updateTypeList
+
+    activateUnitType(units.Length)
+    current_unit_type = "Length"
+    updateTypeList()
+
+    value_from.oninput = calculate
+    unit_from.onchange = updateUnit
+    unit_to.onchange = updateUnit
+    unit_system_from.onchange = updateUnitSystemFrom
+    unit_system_to.onchange = updateUnitSystemTo
+
+    type_selection.onchange = ()=>type_click(type_selection.value)
+
+}
+
 
 function configureSelection(selection, options, def = undefined) {
     let inner = ""
@@ -60,84 +146,114 @@ function configureSelection(selection, options, def = undefined) {
     selection.innerHTML = inner
 }
 
-window.onload = function () {
-    var unit_from = document.getElementById("unit-from")
-    var unit_to = document.getElementById("unit-to")
-    var unit_system_from = document.getElementById("unit-system-from")
-    var unit_system_to = document.getElementById("unit-system-to")
-
-    var value_from = document.getElementById("input-from")
-    var value_to = document.getElementById("input-to")
-
-    var current_unit_type = undefined
-    var current_unit_from = undefined
-    var current_unit_to = undefined
-
-    function calculate(){
-        let input_value = 0
-        
-        if(current_unit_from == undefined || current_unit_to == undefined){
-            throw Error("undefined unit")
+function updateTypeList(){
+    let size = Math.floor(contentFrame.clientWidth/typeWidth-1.25)
+    let i = 0
+    let typeString = ""
+    let typeIsActive = false
+    let types = Object.keys(units)
+    for (i = 0; i < size; i++) {
+        if (i >= types.length)
+            break
+        if(types[i] === current_unit_type & !typeIsActive){
+            typeIsActive = true
+            typeString += `<div class="selector-type hover selector-active" onclick="type_click('${types[i]}')">${types[i]}</div>`
         }
-        if(value_from.value.trim() == ""){
-            console.log("value empty")
-            value_to.value = ""
-            return
-        }
-        input_value = Number(value_from.value)
-        if(isNaN(input_value)){
-            console.log("not a number")
-            value_to.value = ""
-            return
-        }
-        let val = 10
-        val.toString().includes()
-        let valueSI = current_unit_from.toSI(input_value)
-        valueSI
-        value_to.value = current_unit_to.fromSI(valueSI)
+        else
+            typeString += `<div class="selector-type hover" onclick="type_click('${types[i]}')">${types[i]}</div>`
     }
 
-    function activateUnitType(typeData) {
-        let unit_types = Object.keys(typeData)
-        configureSelection(unit_system_from,unit_types)
-        configureSelection(unit_system_to,unit_types)
+    type_list.innerHTML = typeString
+    
+    if(i >= types.length){
+        type_selection.parentElement.hidden = true
+        type_selection.parentElement.className = ""
+        return
+    }
+    type_selection.parentElement.hidden = false
+    type_selection.parentElement.className = "hover"
+    
+    configureSelection(type_selection,types.slice(i))
 
-        let units = Object.keys(typeData[unit_types[0]])
-        configureSelection(unit_from,units)
-        configureSelection(unit_to,units)
-        current_unit_to = typeData[unit_types[0]][units[0]]
-        current_unit_from = typeData[unit_types[0]][units[0]]
+    if(!typeIsActive){
+        type_selection.parentElement.className = "selector-active hover"
+        type_selection.value = current_unit_type
+    }
+    else{
+        type_selection.parentElement.className = "hover"
+    }
+}
+
+function type_click(name) {
+    current_unit_type = name
+    activateUnitType(units[name])
+    updateTypeList()
+
+}
+
+function calculate(){
+    let input_value = 0
+    
+    if(current_unit_from == undefined || current_unit_to == undefined){
+        throw Error("undefined unit")
+    }
+    if(value_from.value.trim() == ""){
+        console.log("value empty")
+        value_to.value = ""
+        return
+    }
+    input_value = Number(value_from.value.replace(",","."))
+    if(isNaN(input_value)){
+        console.log("not a number")
+        value_to.value = ""
+        return
     }
 
-    function updateUnit(){
-        current_unit_from = units[current_unit_type][unit_system_from.value][unit_from.value]
-        current_unit_to = units[current_unit_type][unit_system_to.value][unit_to.value]
-        calculate()
+    let valueSI = current_unit_from.toSI(input_value)
+    valueTo = current_unit_to.fromSI(valueSI)
+
+    // round output value
+    let valString = valueTo.toString()
+    if(valString.includes('e')){
+        let indexE = valString.indexOf('e')
+        valueTo = Number(Number(valString.substring(0,indexE)).toFixed(roundTo)).toString() + valString.slice(indexE,valString.length)
+    }else{
+        valueTo = Number(valueTo.toFixed(roundTo))
     }
 
-    function updateUnitSystemFrom(){
-        unitKeys = Object.keys(units[current_unit_type][unit_system_from.value])
-        configureSelection(unit_from,unitKeys)
-        current_unit_from = units[current_unit_type][unit_system_from.value][unitKeys[0]]
-        calculate()
-    }
+    value_to.value = valueTo
+}
 
-    function updateUnitSystemTo(){
-        unitKeys = Object.keys(units[current_unit_type][unit_system_to.value])
-        configureSelection(unit_to,unitKeys)
-        current_unit_to = units[current_unit_type][unit_system_to.value][unitKeys[0]]
-        calculate()
-    }
+function activateUnitType(typeData) {
+    let unit_types = Object.keys(typeData)
+    configureSelection(unit_system_from,unit_types)
+    configureSelection(unit_system_to,unit_types)
 
-    activateUnitType(units.Length)
-    current_unit_type = "Length"
+    let units = Object.keys(typeData[unit_types[0]])
+    configureSelection(unit_from,units)
+    configureSelection(unit_to,units)
+    current_unit_to = typeData[unit_types[0]][units[0]]
+    current_unit_from = typeData[unit_types[0]][units[0]]
+}
 
-    value_from.oninput = calculate
-    unit_from.onchange = updateUnit
-    unit_to.onchange = updateUnit
-    unit_system_from.onchange = updateUnitSystemFrom
-    unit_system_to.onchange = updateUnitSystemTo
+function updateUnit(){
+    current_unit_from = units[current_unit_type][unit_system_from.value][unit_from.value]
+    current_unit_to = units[current_unit_type][unit_system_to.value][unit_to.value]
+    calculate()
+}
 
+function updateUnitSystemFrom(){
+    unitKeys = Object.keys(units[current_unit_type][unit_system_from.value])
+    configureSelection(unit_from,unitKeys)
+    current_unit_from = units[current_unit_type][unit_system_from.value][unitKeys[0]]
+    calculate()
+}
+
+function updateUnitSystemTo(){
+    unitKeys = Object.keys(units[current_unit_type][unit_system_to.value])
+    configureSelection(unit_to,unitKeys)
+    current_unit_to = units[current_unit_type][unit_system_to.value][unitKeys[0]]
+    calculate()
 }
 
 
