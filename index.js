@@ -18,10 +18,10 @@ units = {
             "Femto-Meter": new Unit("fm", x => x * 1e-15, x => x * 1e15),
             "Pico-Meter": new Unit("pm", x => x * 1e-12, x => x * 1e12),
             "Nano-Meter": new Unit("nm", x => x * 1e-9, x => x * 1e9),
-            "Micro-Meter": new Unit("um", x => x * 1e-6, x => x * 1e6),
+            "Micro-Meter": new Unit("µm", x => x * 1e-6, x => x * 1e6),
             "Milli-Meter": new Unit("mm", x => x * 1e-3, x => x * 1e3),
             "Centi-Meter": new Unit("cm", x => x * 1e-2, x => x * 1e2),
-
+            "Deci-Meter": new Unit("dm", x => x * 1e-1, x => x * 1e1),
             "Kilo-Meter": new Unit("km", x => x * 1e3, x => x * 1e-3),
             "Mega-Meter": new Unit("Mm", x => x * 1e6, x => x * 1e-6),
             "Giga-Meter": new Unit("Gm", x => x * 1e9, x => x * 1e-9),
@@ -29,7 +29,7 @@ units = {
         Imperial: {
             "Inc": new Unit("in", x => x * 0.0254, x => x / 0.0254),
             "Foot": new Unit("ft", x => x * 0.3048, x => x / 0.3048),
-            "Yard": new Unit("in", x => x * 0.9144, x => x / 0.9144),
+            "Yard": new Unit("yd", x => x * 0.9144, x => x / 0.9144),
             "Mile": new Unit("mi", x => x * 1.609344e3, x => x / 1.609344e3),
             "Nautical Mile": new Unit("NM", x => x * 1852, x => x / 1852),
 
@@ -51,54 +51,191 @@ units = {
             "Stalin": new Unit("st",x=>x*1.65, x=>x/1.65)
         },
     },
-    Weight:{
-        SI:{
-            "Kilo-Gram": new Unit("kg", x=>x, x=>x)
-        }
-    },
     Area:{
         SI:{
-            "Squaremeter": new Unit("m^2", x=>x, x=>x)
+            "Square Meter": new Unit("m^2", x=>x, x=>x),
+            "Square Nano-Meter": new Unit("nm^2", x=>x, x=>x),
+            "Square Micro-Meter": new Unit("µm^2", x=>x, x=>x),
+            "Square Milli-Meter": new Unit("mm^2", x=>x, x=>x),
+            "Square Centi-Meter": new Unit("cm^2", x=>x, x=>x),
+            "Square Dezi-Meter": new Unit("dm^2", x=>x, x=>x),
+            "Are": new Unit("a", x=>x, x=>x),
+            "Hectare": new Unit("ha", x=>x, x=>x),
+            "Square Kilo-Meter": new Unit("km^2", x=>x, x=>x),
+        },
+        Imperial:{
+            "Square Inch": new Unit("in^2", x=>x, x=>x),
+            "Square Foot": new Unit("ft^2", x=>x, x=>x),
+            "Square Yard": new Unit("yd^2", x=>x, x=>x),
+            "Square Mile": new Unit("mi^2", x=>x, x=>x),
+            "Acre": new Unit("mi^2", x=>x, x=>x),
+            "Rood": new Unit("rd", x=>x, x=>x),
+            "Acre": new Unit("ac", x=>x, x=>x),
+            "Circular Mil": new Unit("cmil", x=>x, x=>x),
+            "Circular Inch": new Unit("cinch", x=>x, x=>x),
         }
     },
     Volume:{
         SI:{
-        "Cubicmeter": new Unit("m^3", x=>x, x=>x)
+            "Litre": new Unit("l", x=>x, x=>x),
+            "Micro-Litre": new Unit("µl", x=>x, x=>x),
+            "Milli-Litre": new Unit("ml", x=>x, x=>x),
+            "Centi-Litre": new Unit("cl", x=>x, x=>x),
+            "Kilo-Litre": new Unit("kl", x=>x, x=>x),
+            "Mega-Litre": new Unit("Ml", x=>x, x=>x),
+            "Cubic Meter": new Unit("m^3", x=>x, x=>x),
+            "Cubic Nano-Meter": new Unit("nm^3", x=>x, x=>x),
+            "Cubic Micro-Meter": new Unit("µm^3", x=>x, x=>x),
+            "Cubic Milli-Meter": new Unit("mm^3", x=>x, x=>x),
+            "Cubic Centi-Meter": new Unit("cm^3", x=>x, x=>x),
+            "Cubic Deci-Meter": new Unit("dm^3", x=>x, x=>x),
+            "Cubic Kilo-Meter": new Unit("km^3", x=>x, x=>x),
+            "Cubic Mega-Meter": new Unit("Mm^3", x=>x, x=>x),
+        },
+        Imperial:{
+            "Cubic Inc": new Unit("m^3", x=>x, x=>x),
+            "Cubic Foot": new Unit("m^3", x=>x, x=>x),
+            "Cubic Yard": new Unit("m^3", x=>x, x=>x),
+            "Cubic Mile": new Unit("m^3", x=>x, x=>x),
+            "Barrel": new Unit("m^3", x=>x, x=>x),
+            "Gallon": new Unit("m^3", x=>x, x=>x),
+            "Bucket": new Unit("m^3", x=>x, x=>x),
+            "Bushel": new Unit("m^3", x=>x, x=>x),
+            "Cup": new Unit("m^3", x=>x, x=>x),
+            "Gill": new Unit("m^3", x=>x, x=>x),
+            "Minim": new Unit("m^3", x=>x, x=>x),
+            "Ounce": new Unit("m^3", x=>x, x=>x),
+            "Peck": new Unit("m^3", x=>x, x=>x),
+            "Pipe": new Unit("m^3", x=>x, x=>x),
+            "Drum": new Unit("m^3", x=>x, x=>x),
+        },
+        Other:{
+            "Teaspoon": new Unit("m^3", x=>x, x=>x),
+            "Tablespoon": new Unit("m^3", x=>x, x=>x),
+            "Cord": new Unit("m^3", x=>x, x=>x),
+            "Shot": new Unit("m^3", x=>x, x=>x),
+            "Robie": new Unit("m^3", x=>x, x=>x),
+            "Quart": new Unit("m^3", x=>x, x=>x),
+        }
+    },
+    Weight:{
+        SI:{
+            "Kilo-Gram": new Unit("kg", x=>x, x=>x),
+            "Nano-Gram": new Unit("ng", x=>x, x=>x),
+            "Micro-Gram": new Unit("µg", x=>x, x=>x),
+            "Milli-Gram": new Unit("mg", x=>x, x=>x),
+            "Centi-Gram": new Unit("g", x=>x, x=>x),
+            "Deci-Gram": new Unit("g", x=>x, x=>x),
+            "Gram": new Unit("g", x=>x, x=>x),
+            "Tonne": new Unit("T", x=>x, x=>x),
+            "Kilo-Tonne": new Unit("kT", x=>x, x=>x),
+            "Mega-Tonne": new Unit("MT", x=>x, x=>x),
+            "Giga-Tonne": new Unit("GT", x=>x, x=>x),
+        },
+        Imperial:{  
+            "Grain": new Unit("g", x=>x, x=>x),
+            "Ounce": new Unit("g", x=>x, x=>x),
+            "Pounds": new Unit("g", x=>x, x=>x),
+            "Ton": new Unit("g", x=>x, x=>x),
+            "Short Ton": new Unit("g", x=>x, x=>x),
+            "Long Ton": new Unit("g", x=>x, x=>x),
+            "Hundredweight": new Unit("g", x=>x, x=>x),
+        },
+        Astronomical:{
+            "Solar Mass": new Unit("g", x=>x, x=>x),
+            "Jupiter Mass": new Unit("g", x=>x, x=>x),
+            "Earth Mass": new Unit("g", x=>x, x=>x),
         }
     },
     Density:{
         SI:{
-        "Kilo-Gram/Cubicmeter": new Unit("kg", x=>x, x=>x)
-        }   
+            "Kilo-Gram/Cubicmeter": new Unit("kg", x=>x, x=>x),
+        },
+        Imperial:{
+            "Ounce/Cubic Inch": new Unit("kg", x=>x, x=>x),
+            "Ounce/Cubic Inch": new Unit("kg", x=>x, x=>x),
+            "Pound/Cubic Foot": new Unit("kg", x=>x, x=>x),
+            "Pound/Cubic Yard": new Unit("kg", x=>x, x=>x),
+            "Pound/Cubic Mile": new Unit("kg", x=>x, x=>x),
+            "Pound/Cubic Foot": new Unit("kg", x=>x, x=>x),
+            "Pound/Cubic Foot": new Unit("kg", x=>x, x=>x),
+            "Ounce/Gallon": new Unit("kg", x=>x, x=>x),
+            "Pound/Gallon": new Unit("kg", x=>x, x=>x),
+        },
+        Other:{
+            "Water": new Unit("kg", x=>x, x=>x),
+        }
     },
     Temperature:{
         SI:{
-        "Kelvin": new Unit("K", x=>x, x=>x)
-        }   
-    },
-    Power:{
-        SI:{
-        "Watt": new Unit("W", x=>x, x=>x)
-        }   
-    },
-    Force:{
-        SI:{
-        "Newton": new Unit("N", x=>x, x=>x)
-        }   
+            "Celcius": new Unit("C", x=>x, x=>x),
+            "Kelvin": new Unit("K", x=>x, x=>x),
+        },
+        Imperial:{
+            "Farenheit": new Unit("K", x=>x, x=>x),
+        },
+        Other:{
+            "Rankine": new Unit("K", x=>x, x=>x),
+        }
     },
     Velocity:{
         SI:{
-        "Meter/Second": new Unit("m/s", x=>x, x=>x)
+            "Meter/Second": new Unit("m/s", x=>x, x=>x)
         }   
     },
     Acceleration:{
         SI:{
-        "Meter/Second^2": new Unit("m/s^2", x=>x, x=>x)
+            "Meter/Second^2": new Unit("m/s^2", x=>x, x=>x)
         }   
+    },
+    Force:{
+        SI:{
+            "Newton": new Unit("N", x=>x, x=>x)
+        },
+        Imperial:{
+            "Pound Force": new Unit("lbf", x=>x, x=>x),
+            "Poundal": new Unit("pdl", x=>x, x=>x)
+        },
+        Other:{
+            "Kilo-Gram Force": new Unit("kgf", x=>x, x=>x),
+            "Dyne": new Unit("dyn", x=>x, x=>x)
+        }
+    },
+    Energy:{
+        SI:{
+            "Nano-Joule": new Unit("N", x=>x, x=>x),
+            "Micro-Joule": new Unit("N", x=>x, x=>x),
+            "Milli-Joule": new Unit("N", x=>x, x=>x),
+            "Joule": new Unit("N", x=>x, x=>x),
+            "Kilo-Joule": new Unit("N", x=>x, x=>x),
+            "Mega-Joule": new Unit("N", x=>x, x=>x),
+            "Giga-Joule": new Unit("N", x=>x, x=>x),
+            "Peta-Joule": new Unit("N", x=>x, x=>x),
+        },
+        Other:{
+            "Calories": new Unit("N", x=>x, x=>x),
+            "British Thermal Unit": new Unit("N", x=>x, x=>x),
+            "Foot Pounds": new Unit("N", x=>x, x=>x),
+        }
+    },
+    Power:{
+        SI:{
+            "Watt": new Unit("W", x=>x, x=>x),
+            "Nano-Watt": new Unit("W", x=>x, x=>x),
+            "Micro-Watt": new Unit("W", x=>x, x=>x),
+            "Milli-Watt": new Unit("W", x=>x, x=>x),
+            "Kilo-Watt": new Unit("W", x=>x, x=>x),
+            "Mega-Watt": new Unit("W", x=>x, x=>x),
+            "Giga-Watt": new Unit("W", x=>x, x=>x),
+            "Tera-Watt": new Unit("W", x=>x, x=>x),
+        },
+        Other:{
+            "Horsepower": new Unit("W", x=>x, x=>x),
+        }
     },
     Radioactivity:{
         SI:{
-        "Bequerel": new Unit("kg", x=>x, x=>x)
+            "Bequerel": new Unit("kg", x=>x, x=>x)
         }   
     },
 }
