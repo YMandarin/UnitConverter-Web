@@ -1,6 +1,6 @@
 var unit_from, unit_to, unit_system_from, unit_system_to, value_from, value_to, type_list, type_selection, current_unit_type, current_unit_from, current_unit_to, contentFrame = undefined
 var roundTo = 6
-var typeWidth = 75
+var typeWidth = 80
 
 class Unit {
     constructor(short, calculateToSI, calculateFromSI) {

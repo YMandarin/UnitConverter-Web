@@ -7,7 +7,7 @@
     "background_color":"#ffffff",
     "icons": [
       {
-        "src": "favicon.png",
+        "src": "favicon.ico",
         "sizes": "100x100",
         "type": "image/png"
       }]
