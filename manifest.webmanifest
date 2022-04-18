@@ -17,5 +17,17 @@
         "sizes": "196x196",
         "type": "image/png",
         "purpose":"maskable"
+      },
+      {
+        "src": "favicon-512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose":"any"
+      },
+      {
+        "src": "favicon-512-maskable.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose":"maskable"
       }]
   }
