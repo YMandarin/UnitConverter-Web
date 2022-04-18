@@ -58,7 +58,7 @@ units = {
             "Square Micro-Meter": new Unit("µm^2", x=>x, x=>x),
             "Square Milli-Meter": new Unit("mm^2", x=>x, x=>x),
             "Square Centi-Meter": new Unit("cm^2", x=>x, x=>x),
-            "Square Dezi-Meter": new Unit("dm^2", x=>x, x=>x),
+            "Square Deci-Meter": new Unit("dm^2", x=>x, x=>x),
             "Are": new Unit("a", x=>x, x=>x),
             "Hectare": new Unit("ha", x=>x, x=>x),
             "Square Kilo-Meter": new Unit("km^2", x=>x, x=>x),

@@ -35,9 +35,9 @@ body{
 }
 
 .selector-type{
-    height: 28px;
+    height: 29px;
     box-sizing: border-box;
-    padding:5.5px 0;
+    padding:6px 0;
     width: 79px;
     text-align: center;
     font-size:0.8em;

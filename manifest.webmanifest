@@ -7,25 +7,25 @@
     "background_color":"#ffffff",
     "icons": [
       {
-        "src": "favicon-196.png",
+        "src": "./resources/assets/favicon-196.png",
         "sizes": "196x196",
         "type": "image/png",
         "purpose":"any"
       },
       {
-        "src": "favicon-196-maskable.png",
+        "src": "./resources/assets/favicon-196-maskable.png",
         "sizes": "196x196",
         "type": "image/png",
         "purpose":"maskable"
       },
       {
-        "src": "favicon-512.png",
+        "src": "./resources/assets/favicon-512.png",
         "sizes": "512x512",
         "type": "image/png",
         "purpose":"any"
       },
       {
-        "src": "favicon-512-maskable.png",
+        "src": "./resources/assets/favicon-512-maskable.png",
         "sizes": "512x512",
         "type": "image/png",
         "purpose":"maskable"
