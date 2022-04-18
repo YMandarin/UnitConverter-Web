@@ -7,8 +7,15 @@
     "background_color":"#ffffff",
     "icons": [
       {
-        "src": "favicon.ico",
-        "sizes": "100x100",
-        "type": "image/png"
+        "src": "favicon-196.png",
+        "sizes": "196x196",
+        "type": "image/png",
+        "purpose":"any"
+      },
+      {
+        "src": "favicon-196-maskable.png",
+        "sizes": "196x196",
+        "type": "image/png",
+        "purpose":"maskable"
       }]
   }
